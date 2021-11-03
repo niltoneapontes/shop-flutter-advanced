@@ -11,14 +11,14 @@ class OrdersPage extends StatelessWidget {
   Widget build(BuildContext context) {
     final OrderList orders = Provider.of(context);
     return Scaffold(
-        appBar: AppBar(
-          title: Text('Meus pedidos'),
-        ),
-        drawer: AppDrawer(),
-        body: ListView.builder(
-            itemCount: orders.itemsCount,
-            itemBuilder: (ctx, index) {
-              return OrderWidget(order: orders.items[index]);
-            }));
+      appBar: AppBar(
+        title: Text('Meus Pedidos'),
+      ),
+      drawer: AppDrawer(),
+      body: ListView.builder(
+        itemCount: orders.itemsCount,
+        itemBuilder: (ctx, i) => OrderWidget(order: orders.items[i]),
+      ),
+    );
   }
 }

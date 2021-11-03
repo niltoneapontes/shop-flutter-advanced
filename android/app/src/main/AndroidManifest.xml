@@ -1,8 +1,8 @@
 <manifest xmlns:android="http://schemas.android.com/apk/res/android"
     package="com.example.shop">
    <application
-        android:label="shop"
-        android:icon="@mipmap/ic_launcher">
+        android:label="Flutter Shop"
+        android:icon="@drawable/icon">
         <activity
             android:name=".MainActivity"
             android:launchMode="singleTop"

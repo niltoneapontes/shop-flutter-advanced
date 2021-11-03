@@ -7,27 +7,34 @@ class AppDrawer extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Drawer(
-        child: Column(
-      children: [
-        AppBar(
-          title: Text('Bem vinde'),
-          automaticallyImplyLeading: false,
-        ),
-        Divider(),
-        ListTile(
-          leading: Icon(Icons.store),
-          title: Text('Loja'),
-          onTap: () =>
-              Navigator.of(context).pushReplacementNamed(AppRoutes.HOME),
-        ),
-        Divider(),
-        ListTile(
-          leading: Icon(Icons.local_shipping),
-          title: Text('Pedidos'),
-          onTap: () =>
-              Navigator.of(context).pushReplacementNamed(AppRoutes.ORDERS),
-        ),
-      ],
-    ));
+      child: Column(
+        children: [
+          AppBar(
+            title: Text('Bem vindo Uusário!'),
+            automaticallyImplyLeading: false,
+          ),
+          Divider(),
+          ListTile(
+            leading: Icon(Icons.shop),
+            title: Text('Loja'),
+            onTap: () {
+              Navigator.of(context).pushReplacementNamed(
+                AppRoutes.HOME,
+              );
+            },
+          ),
+          Divider(),
+          ListTile(
+            leading: Icon(Icons.payment),
+            title: Text('Pedidos'),
+            onTap: () {
+              Navigator.of(context).pushReplacementNamed(
+                AppRoutes.ORDERS,
+              );
+            },
+          ),
+        ],
+      ),
+    );
   }
 }

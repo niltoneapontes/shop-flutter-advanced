@@ -6,9 +6,9 @@ import 'package:shop/models/cart_item.dart';
 class CartItemWidget extends StatelessWidget {
   final CartItem cartItem;
 
-  const CartItemWidget({
+  const CartItemWidget(
+    this.cartItem, {
     Key? key,
-    required this.cartItem,
   }) : super(key: key);
 
   @override
@@ -24,28 +24,10 @@ class CartItemWidget extends StatelessWidget {
           size: 40,
         ),
         alignment: Alignment.centerRight,
-        padding: EdgeInsets.only(right: 15),
+        padding: const EdgeInsets.only(right: 20),
         margin: const EdgeInsets.symmetric(
           horizontal: 15,
           vertical: 4,
-        ),
-      ),
-      child: Card(
-        margin: const EdgeInsets.symmetric(
-          horizontal: 15,
-          vertical: 4,
-        ),
-        child: ListTile(
-          leading: CircleAvatar(
-              child: Padding(
-                  padding: const EdgeInsets.all(5),
-                  child: FittedBox(
-                    child: Text('${cartItem.price}'),
-                  ))),
-          title: Text(cartItem.title),
-          subtitle: Text(
-              'Total R\$${(cartItem.price * cartItem.quantity).toStringAsFixed(2)}'),
-          trailing: Text('${cartItem.quantity}x'),
         ),
       ),
       onDismissed: (_) {
@@ -54,6 +36,28 @@ class CartItemWidget extends StatelessWidget {
           listen: false,
         ).removeItem(cartItem.productId);
       },
+      child: Card(
+        margin: const EdgeInsets.symmetric(
+          horizontal: 15,
+          vertical: 4,
+        ),
+        child: Padding(
+          padding: const EdgeInsets.all(8),
+          child: ListTile(
+            leading: CircleAvatar(
+              child: Padding(
+                padding: const EdgeInsets.all(5),
+                child: FittedBox(
+                  child: Text('${cartItem.price}'),
+                ),
+              ),
+            ),
+            title: Text(cartItem.name),
+            subtitle: Text('Total: R\$ ${cartItem.price * cartItem.quantity}'),
+            trailing: Text('${cartItem.quantity}x'),
+          ),
+        ),
+      ),
     );
   }
 }

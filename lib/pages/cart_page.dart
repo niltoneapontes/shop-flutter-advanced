@@ -5,6 +5,8 @@ import 'package:shop/models/cart.dart';
 import 'package:shop/models/order_list.dart';
 
 class CartPage extends StatelessWidget {
+  const CartPage({Key? key}) : super(key: key);
+
   @override
   Widget build(BuildContext context) {
     final Cart cart = Provider.of(context);
@@ -17,24 +19,31 @@ class CartPage extends StatelessWidget {
       body: Column(
         children: [
           Card(
-            margin: EdgeInsets.symmetric(vertical: 25, horizontal: 15),
+            margin: const EdgeInsets.symmetric(
+              horizontal: 15,
+              vertical: 25,
+            ),
             child: Padding(
               padding: const EdgeInsets.all(10),
               child: Row(
                 mainAxisAlignment: MainAxisAlignment.spaceBetween,
                 children: [
                   Text(
-                    'Total: ',
-                    style: TextStyle(fontSize: 20),
+                    'Total',
+                    style: TextStyle(
+                      fontSize: 20,
+                    ),
                   ),
+                  SizedBox(width: 10),
                   Chip(
                     backgroundColor: Theme.of(context).primaryColor,
-                    label: Text('R\$${cart.totalAmount.toStringAsFixed(2)}',
-                        style: TextStyle(
-                            color: Theme.of(context)
-                                .primaryTextTheme
-                                .headline6
-                                ?.color)),
+                    label: Text(
+                      'R\$${cart.totalAmount.toStringAsFixed(2)}',
+                      style: TextStyle(
+                        color:
+                            Theme.of(context).primaryTextTheme.headline6?.color,
+                      ),
+                    ),
                   ),
                   Spacer(),
                   TextButton(
@@ -49,18 +58,20 @@ class CartPage extends StatelessWidget {
                         context,
                         listen: false,
                       ).addOrder(cart);
+
                       cart.clear();
                     },
-                  )
+                  ),
                 ],
               ),
             ),
           ),
           Expanded(
-              child: ListView.builder(
-            itemCount: items.length,
-            itemBuilder: (ctx, index) => CartItemWidget(cartItem: items[index]),
-          ))
+            child: ListView.builder(
+              itemCount: items.length,
+              itemBuilder: (ctx, i) => CartItemWidget(items[i]),
+            ),
+          ),
         ],
       ),
     );
